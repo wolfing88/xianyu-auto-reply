@@ -1,0 +1,29 @@
+name: Sync Code
+on:
+  schedule:
+    - cron: '0 * * * *'  # 每小时自动检查一次（可改为 '0 0 * * *' 每天同步）
+  workflow_dispatch:      # 允许手动触发同步
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整提交历史
+
+      - name: Add Upstream Remote
+        run: |
+          git remote add upstream https://github.com/zhinianboke/xianyu-auto-reply.git
+          git fetch upstream
+
+      - name: Merge Upstream
+        run: |
+          # 设置 Git 身份（关键修复！）
+          git config --global user.email "xxx@qq.com"
+          git config --global user.name "wolfing88"
+          
+          git checkout main  # 或你的默认分支（如 master）
+          git rebase upstream/main  # 改用 merge 会创建一个合并提交
+          git push origin main --force
