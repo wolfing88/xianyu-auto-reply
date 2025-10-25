@@ -1,7 +1,7 @@
 name: Sync Code
 on:
-  #schedule:
-    #- cron: '0 * * * *'  # 每小时自动检查一次（可改为 '0 0 * * *' 每天同步）
+  schedule:
+    - cron: '0 * * * *'  # 每小时自动检查一次（可改为 '0 0 * * *' 每天同步）
   workflow_dispatch:      # 允许手动触发同步
 
 jobs:
