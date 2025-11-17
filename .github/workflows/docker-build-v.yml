@@ -22,7 +22,7 @@ on:
       - 'Dockerfile'
       - 'Dockerfile-cn'
       - 'requirements.txt'
-      - '.github/workflows/docker-build.yml'
+      - '.github/workflows/docker-build-v.yml'
 
 jobs:
   build-and-push:
