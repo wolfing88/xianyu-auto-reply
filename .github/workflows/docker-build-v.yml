@@ -106,11 +106,3 @@ jobs:
         echo "🚀 使用方法:"
         echo "docker pull ${{ matrix.registry }}/${{ matrix.image_name }}:latest"
         echo "========================================="
-
-    
-    - name: 💾 创建Release
-      uses: softprops/action-gh-release@v1
-      with:
-        body_path: release_notes.md
-        draft: false
-        prerelease: false
